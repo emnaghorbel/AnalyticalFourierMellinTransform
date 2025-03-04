@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
+from find_object_center import find_object_center
 from Cartesian2polar2cartesian import cartesian_to_polar
 from AFMT_IAFMT import compute_AFMT
 from invariant_features import compute_invariant_features
