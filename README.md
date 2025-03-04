@@ -1,9 +1,9 @@
-# Analytical Fourier-Mellin Transform (AFMT) and its inverse (IAFMT) for Image Analysis  
+# Analytical Fourier-Mellin Transform Descriptors and its inverse for Image Analysis  
 
-This repository implements the **Analytical Fourier-Mellin Transform (AFMT)** for robust feature extraction in image analysis. The method is applied to **Cancer (1).jpg**, to achieve invariance under scaling, rotation.
+This repository implements the **Analytical Fourier-Mellin Transform Descriptors** for robust feature extraction in image analysis. The method is applied to **Cancer (1).jpg**, to achieve invariance under scaling, rotation.
 
 ## Features  
-- Computes **Fourier-Mellin Transform (FMT)** analytically (**scale-rotation invariant descriptors**).  
+- Computes **Analytical Fourier-Mellin Transform Descriptors**  (**scale-rotation invariant and invertible descriptors**).  
 - Inverts the transform for image reconstruction.  
 
 ## Clone the repository:  
@@ -14,6 +14,7 @@ This will:
 ✅ Convert to polar coordinates
 ✅ Apply **Analytical Fourier-Mellin Transform**  
 ✅ Extract invariant descriptors  
+✅ compute inverse invariant descriptors  
 ✅ Apply **Analytical Fourier-Mellin Transform Inverse** 
 ✅ Convert to cartesian coordinates
 ✅ Reconstruct the image  
