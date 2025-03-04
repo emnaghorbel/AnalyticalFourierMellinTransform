@@ -51,26 +51,35 @@ I_f_rot= normalize_features(I_f_rot, method="minmax")
 cosine_similarity = np.dot(I_f_orig.flatten().real, I_f_rot.flatten().real) / (
     np.linalg.norm(I_f_orig.flatten().real) * np.linalg.norm(I_f_rot.flatten().real)
 )
-def compute_ssim(I_f_orig, I_f_rot):
+
+def complex_distance(I_f1, I_f2):
     """
-    Computes the Structural Similarity Index (SSIM) between two invariant feature matrices.
+    Compute a distance between two complex-valued invariant feature matrices.
 
-    :param I_f_orig: Original invariant features (complex matrix).
-    :param I_f_rot: Rotated invariant features (complex matrix).
-    :return: SSIM value
+    :param I_f1: First invariant matrix (complex-valued).
+    :param I_f2: Second invariant matrix (complex-valued).
+    :return: Scalar distance value.
     """
-    # Convert to real values (taking absolute values)
-    I_f_orig_real = np.abs(I_f_orig)
-    I_f_rot_real = np.abs(I_f_rot)
+    if I_f1.shape != I_f2.shape:
+        raise ValueError("Both feature matrices must have the same shape!")
 
-    # Compute SSIM
-    ssim_value = ssim(I_f_orig_real, I_f_rot_real, data_range=I_f_orig_real.max() - I_f_orig_real.min())
+    # Compute magnitude and phase differences
+    magnitude_diff = np.abs(np.abs(I_f1) - np.abs(I_f2))  # Difference in magnitudes
+    phase_diff = np.abs(np.angle(I_f1) - np.angle(I_f2))  # Difference in angles
 
-    return ssim_value
+    # Normalize phase difference to be in [0, π]
+    phase_diff = np.minimum(phase_diff, 2 * np.pi - phase_diff)
+
+    # Weighted combination of magnitude and phase differences
+    alpha = 0.5  # Weight for magnitude vs. phase
+    distance = np.sqrt((1 - alpha) * np.sum(magnitude_diff**2) + alpha * np.sum(phase_diff**2))
+
+    return distance
+
 # Compute SSIM
-ssim_score = compute_ssim(I_f_orig, I_f_rot)
+distance = complex_distance(I_f_orig, I_f_rot)
 
 # Print SSIM score
-print(f"🔹 Structural Similarity Index (SSIM): {ssim_score:.4f}")
+print(f"🔹 complex_distance: {distance:.4f}")
 
 print(f"🔹 Cosine Similarity: {cosine_similarity}")
