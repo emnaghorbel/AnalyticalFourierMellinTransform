@@ -1,3 +1,7 @@
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+
 def compute_AFMT(f_polar, R_max, N_theta):
     """
     Approximation de la Transformation de Fourier-Mellin Analytique (AFMT).
