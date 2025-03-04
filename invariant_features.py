@@ -1,3 +1,6 @@
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
 def compute_invariant_features(M_f, sigma=1):
     """
     Computes similarity-invariant features for all (k, v) pairs from AFMT.
