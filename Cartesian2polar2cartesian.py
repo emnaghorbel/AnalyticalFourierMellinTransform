@@ -1,3 +1,6 @@
+from find_object_center import find_object_center
+import numpy as np
+
 def cartesian_to_polar(image, N, M):
     """
     Convert an image to polar coordinates using fixed radial and angular steps.
