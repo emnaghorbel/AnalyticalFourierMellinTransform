@@ -1,3 +1,6 @@
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
 def find_object_center(image):
     """
     Find the centroid of the main object in the image.
