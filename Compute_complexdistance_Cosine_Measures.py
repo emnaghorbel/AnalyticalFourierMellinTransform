@@ -76,10 +76,9 @@ def complex_distance(I_f1, I_f2):
 
     return distance
 
-# Compute SSIM
 distance = complex_distance(I_f_orig, I_f_rot)
 
-# Print SSIM score
+
 print(f"🔹 complex_distance: {distance:.4f}")
 
 print(f"🔹 Cosine Similarity: {cosine_similarity}")
